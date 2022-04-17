@@ -485,8 +485,17 @@ class Controller {
         let profitPerClick = player.calcProfitPerClick();
         player.earnMoney(profitPerClick);
 
+        Controller.playSoundEffect("sizzle");
+
         playersBurger.innerHTML = `${player.burger} Burgers`;
         playersMoney.innerHTML = `¥ ${player.money}`;
+    }
+
+    static playSoundEffect(soundEffectName) {
+        let soundEffect = new Audio();
+        soundEffect.preload = "auto";
+        soundEffect.src = `audio/${soundEffectName}.wav`;
+        soundEffect.play();
     }
 
     static displayPurchaseTotal(player, item, inputItemNum) {
